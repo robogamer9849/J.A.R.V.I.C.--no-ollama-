@@ -137,3 +137,6 @@ if 'brightness' in user_message or 'brightest' in user_message or 'light' in use
         cmd = get_command('brightness_down', by)
         run_cmd(cmd)
         send_notification(f'brightness decreased by {by}%')
+
+else:
+    send_notification("I din't understand that, please try again")
