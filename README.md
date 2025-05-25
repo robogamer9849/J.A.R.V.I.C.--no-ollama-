@@ -10,16 +10,13 @@ cd penguspeak
 
 2️⃣ Install Required Python Packages
 
-pip install whisper sounddevice wavio notifypy
+`pip install whisper sounddevice wavio notifypy`
 
 Or:
 
-pip install -r requirements.txt
-
 3️⃣ Install Required System Packages (apt)
 
-sudo apt update
-sudo apt install ffmpeg brightnessctl pamixer neofetch
+`sudo apt install ffmpeg brightnessctl pamixer neofetch`
 
 ⚙️ Configuration
 
