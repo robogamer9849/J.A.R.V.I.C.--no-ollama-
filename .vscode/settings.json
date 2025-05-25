@@ -26,6 +26,8 @@
         "sampwidth",
         "sounddevice",
         "taskkill",
+        "unmute",
+        "unmuted",
         "wavio",
         "winget"
     ]

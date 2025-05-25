@@ -6,34 +6,84 @@ import sounddevice
 import wavio
 import subprocess
 
-def send_notification(title, message):
+def send_notification(message):
     notification = Notify()
-    notification.title = title
+    notification.title = 'J.A.R.V.I.S.'
     notification.message = message
     # if icon_path:
     #     notification.icon = icon_path
     notification.send()
 
-def alert_user(message):
-    send_notification("Alert", message)
+def run_cmd(cmd):
+    try:
+        subprocess.Popen(cmd, shell = True)
+    except:
+        pass
 
-def success_notification(message):
-    send_notification("Success", message)
-
-def error_notification(message):
-    send_notification("Error", message)
 
 freq = 44100
 duration = 7
 
 print('recording...')
-send_notification('va', 'recording')
+send_notification('recording')
 recording = sounddevice.rec(int(duration * freq), samplerate=freq, channels=2)
 sounddevice.wait(duration)
 wavio.write("recording.mp3", recording, freq, sampwidth=2)
 
 model = whisper.load_model(whisperModel)
-user_message = model.transcribe("recording.mp3")["text"].lower()
+user_message = model.transcribe("recording.mp3")["text"].lower().replace('.', '')
 
 print(user_message)
+
+if 'volume' in user_message or 'audio' in user_message or 'sound' in user_message or 'mute' in user_message or 'unmute' in user_message:
+    print('sound related')
+    if 'set' in user_message or 'change' in user_message:
+        volume_level = None
+        for word in user_message.split():
+            # print(word)
+            try:
+                volume_level = int(word)
+                break
+            except ValueError:
+                continue
+        print(volume_level)
+        cmd = get_command('volume_set', volume_level)
+        run_cmd(cmd)
+        send_notification(f'volume is now {volume_level}')
+    
+    elif 'increase' in user_message:
+        by = None
+        for word in user_message.split():
+            try:
+                by = int(word)
+                break
+            except ValueError:
+                continue
+        print(by)
+        cmd = get_command('volume_up', by)
+        run_cmd(cmd)
+        send_notification(f'volume increased by {by}')
+
+    elif 'decrease' in user_message:
+        by = None
+        for word in user_message.split():
+            try:
+                by = int(word)
+                break
+            except ValueError:
+                continue
+        print(by)
+        cmd = get_command('volume_down', by)
+        run_cmd(cmd)
+        send_notification(f'volume decreased by {by}')
+
+    elif 'on mute' in user_message or 'unmute' in user_message or "on me it's" in user_message:
+        cmd = get_command('volume_unmute', None)
+        run_cmd(cmd)
+        send_notification('your system is now unmuted')
+
+    elif 'mute' in user_message or 'silent' in user_message:
+        cmd = get_command('volume_mute', None)
+        run_cmd(cmd)
+        send_notification('your system is now muted')
 

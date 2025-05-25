@@ -12,16 +12,17 @@ userName = 'taha'  # Your username on the computer
 def get_command(action, x):
 
     commands = {
-        f'brightnessctl set {x}%': 'Set display brightness level (range: 5000-19200)',
-        'neofetch': 'Display system information and hardware specifications',
-        'uname -a': 'Print detailed system and kernel information',
-        f'pamixer --allow-boost {x} --set-volume': 'Set audio volume level (integer 0-100)',
-        f'pamixer -i {x}' : 'volume up',
-        f'pamixer -d {x}' : 'volume down',
-        'pamixer -m' : 'mute',
-        f'{x}' : 'run app'
+        'Set display brightness level (range: 5000-19200)': f'brightnessctl set {x}%',
+        'Display system information and hardware specifications': 'neofetch',
+        'Print detailed system and kernel information': 'uname -a',
+        'volume_set': f'pamixer --set-volume {x} --allow-boost',
+        'volume_up': f'pamixer -i {x} --allow-boost',
+        'volume_down': f'pamixer -d {x} --allow-boost',
+        'volume_mute': 'pamixer -m',
+        'volume_unmute': 'pamixer -u --allow-boost',
+        'run app': f'{x}'
     }
 
-    cmd = ''
+    cmd = commands[action]
 
     return(cmd)
