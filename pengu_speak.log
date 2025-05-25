@@ -1,0 +1,7 @@
+2025-05-25 13:01:26,921 - INFO - Notification sent: recording
+2025-05-25 13:01:26,921 - INFO - Started recording audio
+2025-05-25 13:01:34,021 - INFO - Audio recording completed
+2025-05-25 13:01:34,581 - INFO - Loaded Whisper model: base.en
+2025-05-25 13:01:35,380 - INFO - Transcribed message:  can you hear me?
+2025-05-25 13:01:35,381 - WARNING - Unrecognized command:  can you hear me?
+2025-05-25 13:01:35,398 - INFO - Notification sent: I din't understand that, please try again
