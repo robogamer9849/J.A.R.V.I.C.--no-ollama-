@@ -1,4 +1,4 @@
-from time import sleep
+from pathlib import Path
 from config import *
 from notifypy import Notify
 import whisper
@@ -9,7 +9,7 @@ import logging
 
 # Configure logging
 logging.basicConfig(
-    filename='pengu_speak.log',
+    filename=f'{Path(__file__).parent.resolve()}/pengu_speak.log',
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
@@ -18,7 +18,7 @@ def send_notification(message):
     notification = Notify()
     notification.title = 'PenguSpeak'
     notification.message = message
-    notification.icon = 'logo.png'
+    notification.icon = f'{Path(__file__).parent.resolve()}/logo.png'
     notification.send()
     logging.info(f'Notification sent: {message}')
 
