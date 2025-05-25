@@ -8,10 +8,9 @@ import subprocess
 
 def send_notification(message):
     notification = Notify()
-    notification.title = 'J.A.R.V.I.S.'
+    notification.title = 'PenguSpeak'
     notification.message = message
-    # if icon_path:
-    #     notification.icon = icon_path
+    notification.icon = 'logo.png'
     notification.send()
 
 def run_cmd(cmd):
