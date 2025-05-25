@@ -12,7 +12,9 @@ userName = 'taha'  # Your username on the computer
 def get_command(action, x):
 
     commands = {
-        'Set display brightness level (range: 5000-19200)': f'brightnessctl set {x}%',
+        'brightness_set': f'brightnessctl set {x}%',
+        'brightness_up': f'brightnessctl set +{x}%',
+        'brightness_down': f'brightnessctl set {x}%-',
         'Display system information and hardware specifications': 'neofetch',
         'Print detailed system and kernel information': 'uname -a',
         'volume_set': f'pamixer --set-volume {x} --allow-boost',

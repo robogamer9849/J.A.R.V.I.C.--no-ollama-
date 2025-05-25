@@ -31,7 +31,7 @@ sounddevice.wait(duration)
 wavio.write("recording.mp3", recording, freq, sampwidth=2)
 
 model = whisper.load_model(whisperModel)
-user_message = model.transcribe("recording.mp3")["text"].lower().replace('.', '')
+user_message = model.transcribe("recording.mp3")["text"].lower().replace('.', '').replace('%', '')
 
 print(user_message)
 
@@ -87,3 +87,54 @@ if 'volume' in user_message or 'audio' in user_message or 'sound' in user_messag
         run_cmd(cmd)
         send_notification('your system is now muted')
 
+if 'brightness' in user_message or 'brightest' in user_message or 'light' in user_message or 'backlight' in user_message:
+    print('brightness related')
+    if 'set' in user_message or 'change' in user_message:
+        if 'max' in user_message or 'maximum' in user_message:
+            cmd = get_command('brightness_set', 100)
+            run_cmd(cmd)
+            send_notification(f'brightness is set to maximum')
+
+        elif 'min' in user_message or 'minimum' in user_message or 'menu' in user_message or 'minimal' in user_message:
+            cmd = get_command('brightness_set', 5)
+            run_cmd(cmd)
+            send_notification(f'brightness is set to minimum')
+        
+        else:
+            brightness_level = None
+            for word in user_message.split():
+                try:
+                    brightness_level = int(word)
+                    break
+                except ValueError:
+                    continue
+            print(brightness_level)
+            cmd = get_command('brightness_set', brightness_level)
+            run_cmd(cmd)
+            send_notification(f'brightness is now at {brightness_level}%')
+    
+    elif 'increase' in user_message:
+        by = None
+        for word in user_message.split():
+            try:
+                by = int(word)
+                break
+            except ValueError:
+                continue
+        print(by)
+        cmd = get_command('brightness_up', by)
+        run_cmd(cmd)
+        send_notification(f'brightness increased by {by}%')
+
+    elif 'decrease' in user_message:
+        by = None
+        for word in user_message.split():
+            try:
+                by = int(word)
+                break
+            except ValueError:
+                continue
+        print(by)
+        cmd = get_command('brightness_down', by)
+        run_cmd(cmd)
+        send_notification(f'brightness decreased by {by}%')
