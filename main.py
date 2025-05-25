@@ -47,8 +47,6 @@ logging.info(f'Loaded Whisper model: {whisperModel}')
 user_message = model.transcribe("recording.mp3")["text"].lower().replace('.', '').replace('%', '')
 logging.info(f'Transcribed message: {user_message}')
 
-print(user_message)
-
 if 'volume' in user_message or 'audio' in user_message or 'sound' in user_message or 'mute' in user_message or 'unmute' in user_message:
     logging.info('Processing sound-related command')
     print('sound related')
