@@ -41,8 +41,12 @@ if 'brightness' in user_message or 'brightest' in user_message or 'light' in use
     command = brightness_cmd(user_message = user_message)
 
 if 'open' in user_message or 'run' in user_message or 'lunch' in user_message:
-    app_name = ' '.join(word for word in user_message.split() if word not in ['open', 'run', 'lunch', ' ', '.'])
-    command = apps[app_name]
+    for word in user_message.split:
+        try:
+            command = apps[word]
+            break
+        except:
+            continue
 
 else:
     logging.warning(f'Unrecognized command: {user_message}')
