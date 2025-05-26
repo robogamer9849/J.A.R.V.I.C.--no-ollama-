@@ -50,14 +50,15 @@ if ('open' or 'run' or 'lunch' or 'show') in user_message:
             break
         except:
             continue
-if ('clear' or 'delete') in user_message and ('logs' or 'log') in user_message:
-    log_file = f'{Path(__file__).parent.resolve()}/pengu_speak.log'
-    if os.path.exists(log_file):
-        os.remove(log_file)
-        send_notification('Log file cleared')
 
 try:
     run_cmd(command)
 except:
-    logging.warning(f'Unrecognized command: {user_message}')
-    send_notification("I din't understand that, please try again")
+    if ('clear' or 'delete') in user_message and ('logs' or 'log') in user_message:
+        log_file = f'{Path(__file__).parent.resolve()}/pengu_speak.log'
+        if os.path.exists(log_file):
+            os.remove(log_file)
+            send_notification('Log file cleared')
+    else:
+        logging.warning(f'Unrecognized command: {user_message}')
+        send_notification("I din't understand that, please try again")

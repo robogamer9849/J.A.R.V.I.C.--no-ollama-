@@ -1,5 +1,5 @@
 # AI models used for different tasks
-whisperModel = "small.en"  # Model for speech recognition
+whisperModel = "medium.en"  # Model for speech recognition
 
 # Your computer settings
 systemOs = 'debian'  # Your operating system
