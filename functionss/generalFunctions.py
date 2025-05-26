@@ -36,7 +36,7 @@ def send_notification(message):
     notification = Notify()
     notification.title = 'PenguSpeak'
     notification.message = message
-    notification.icon = f'{Path(__file__).parent.resolve()}/logo.png'
+    notification.icon = f'{Path(__file__).parent.resolve()}/../logo.png'
     notification.send()
     logging.info(f'Notification sent: {message}')
 

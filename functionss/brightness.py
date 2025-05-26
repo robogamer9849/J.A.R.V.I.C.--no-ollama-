@@ -1,4 +1,4 @@
-from generalFunctions import *
+from .generalFunctions import *
 
 
 def brightness_cmd(user_message):

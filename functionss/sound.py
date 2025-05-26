@@ -1,4 +1,4 @@
-from generalFunctions import *
+from .generalFunctions import *
 
 def voice_cmd(user_message):
     if 'set' in user_message or 'change' in user_message:

@@ -41,9 +41,10 @@ if 'brightness' in user_message or 'brightest' in user_message or 'light' in use
     command = brightness_cmd(user_message = user_message)
 
 if 'open' in user_message or 'run' in user_message or 'lunch' in user_message:
-    for word in user_message.split:
+    for word in user_message.split():
         try:
             command = apps[word]
+            send_notification(f'opening {word}')
             break
         except:
             continue
