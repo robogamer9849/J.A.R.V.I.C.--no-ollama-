@@ -1,5 +1,6 @@
 from pathlib import Path
 from config import *
+import os
 import whisper
 import sounddevice
 import wavio
@@ -32,15 +33,15 @@ logging.info(f'Loaded Whisper model: {whisperModel}')
 user_message = model.transcribe("recording.mp3")["text"].lower().replace('.', '').replace('%', '')
 logging.info(f'Transcribed message: {user_message}')
 
-if 'volume' in user_message or 'audio' in user_message or 'sound' in user_message or 'mute' in user_message or 'unmute' in user_message:
+if ('volume' or 'audio' or 'sound' or 'mute' or 'unmute') in user_message:
     logging.info('Processing sound-related command')    
     command = voice_cmd(user_message = user_message)
 
-if 'brightness' in user_message or 'brightest' in user_message or 'light' in user_message or 'backlight' in user_message:
+if ('brightness' or 'brightest' or 'light' or 'backlight') in user_message:
     logging.info('Processing brightness-related command')
     command = brightness_cmd(user_message = user_message)
 
-if 'open' in user_message or 'run' in user_message or 'lunch' in user_message or 'show' in user_message:
+if ('open' or 'run' or 'lunch' or 'show') in user_message:
     for word in user_message.split():
         try:
             print(word)
@@ -49,6 +50,11 @@ if 'open' in user_message or 'run' in user_message or 'lunch' in user_message or
             break
         except:
             continue
+if ('clear' or 'delete') in user_message and ('logs' or 'log') in user_message:
+    log_file = f'{Path(__file__).parent.resolve()}/pengu_speak.log'
+    if os.path.exists(log_file):
+        os.remove(log_file)
+        send_notification('Log file cleared')
 
 try:
     run_cmd(command)
