@@ -12,9 +12,7 @@ userName = 'taha'  # Your username on the computer
 #   'terminal' : 'gnome-terminal'
 apps = {
     'terminal' : 'gnome-terminal',
-    'beeper' : '/home/taha/Applications/Beeper_acca4027fa2e4a3d47d5a46b4356cfd2.AppImage --no-sandbox %U',
-    'file' : 'nautilus',
-    'files' : 'nautilus',
-    'nautilus' : 'nautilus',
-    
+    'beeper' : '~/Applications/Beeper_acca4027fa2e4a3d47d5a46b4356cfd2.AppImage --no-sandbox %U',
+    'file' or 'files' or 'nautilus': 'nautilus',
+    'phone' or 'screen' or 'mobile': 'scrcpy --video-codec=h265 --max-size=1920 --max-fps=60 --audio-codec=opus --keyboard=uhid --mouse=uhid --stay-awake --turn-screen-off --kill'
 }
