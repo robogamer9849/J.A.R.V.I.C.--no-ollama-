@@ -10,7 +10,7 @@ cd penguspeak
 
 2️⃣ Install Required Python Packages
 
-`pip install whisper sounddevice wavio notifypy`
+`pip install whisper sounddevice wavio notify-py`
 
 Or:
 
