@@ -7,4 +7,13 @@ userName = 'taha'  # Your username on the computer
 
 # List of available commands and what they do
 
-# Dont touch this part
+# add the names of the apps that you need and the command that tuns it in the terminal here
+# first type the app name then the command that runs it like this example:
+#   'terminal' : 'gnome-terminal'
+apps = {
+    'terminal' : 'gnome-terminal',
+    'beeper' : '/home/taha/Applications/Beeper_acca4027fa2e4a3d47d5a46b4356cfd2.AppImage --no-sandbox %U'
+    'file manager' 'nautilus'
+    'files' 'nautilus'
+    'nautilus' 'nautilus'
+}
