@@ -12,8 +12,9 @@ userName = 'taha'  # Your username on the computer
 #   'terminal' : 'gnome-terminal'
 apps = {
     'terminal' : 'gnome-terminal',
-    'beeper' : '/home/taha/Applications/Beeper_acca4027fa2e4a3d47d5a46b4356cfd2.AppImage --no-sandbox %U'
-    'file manager' 'nautilus'
-    'files' 'nautilus'
-    'nautilus' 'nautilus'
+    'beeper' : '/home/taha/Applications/Beeper_acca4027fa2e4a3d47d5a46b4356cfd2.AppImage --no-sandbox %U',
+    'file' : 'nautilus',
+    'files' : 'nautilus',
+    'nautilus' : 'nautilus',
+    
 }

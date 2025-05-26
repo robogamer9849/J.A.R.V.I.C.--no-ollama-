@@ -43,14 +43,15 @@ if 'brightness' in user_message or 'brightest' in user_message or 'light' in use
 if 'open' in user_message or 'run' in user_message or 'lunch' in user_message:
     for word in user_message.split():
         try:
+            print(word)
             command = apps[word]
             send_notification(f'opening {word}')
             break
         except:
             continue
 
-else:
+try:
+    run_cmd(command)
+except:
     logging.warning(f'Unrecognized command: {user_message}')
     send_notification("I din't understand that, please try again")
-
-run_cmd(command)
