@@ -61,4 +61,4 @@ except:
             send_notification('Log file cleared')
     else:
         logging.warning(f'Unrecognized command: {user_message}')
-        send_notification("I din't understand that, please try again")
+        send_notification(f"I din't understand that, please try again\n'{user_message}'")
