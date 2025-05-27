@@ -28,6 +28,8 @@ Edit the config.py file to:
 
     Define the commands for brightness and volume control, system info, and more.
 
+    add the apps you want as shown in the example 
+
 🚀 Usage
 
 1️⃣ Run the Script
@@ -53,6 +55,8 @@ Press the shortcut and speak commands like:
 
     "Set brightness to maximum"
 
+    "open terminal"
+
 🔥 Features
 
     Voice recognition using OpenAI Whisper
@@ -60,6 +64,8 @@ Press the shortcut and speak commands like:
     Volume control: set, increase, decrease, mute, unmute
 
     Brightness control: set, increase, decrease
+
+    opening apps: as you defined in the config
 
     Notifications and system info display
 
