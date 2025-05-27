@@ -21,16 +21,16 @@ freq = 44100
 duration = 7
 
 print('recording...')
-send_notification('recording')
+send_notification('recording...')
 logging.info('Started recording audio')
 recording = sounddevice.rec(int(duration * freq), samplerate=freq, channels=2)
 sounddevice.wait(duration)
-wavio.write("recording.mp3", recording, freq, sampwidth=2)
+wavio.write(f"{Path(__file__).parent.resolve()}/recording.mp3", recording, freq, sampwidth=2)
 logging.info('Audio recording completed')
 
 model = whisper.load_model(whisperModel)
 logging.info(f'Loaded Whisper model: {whisperModel}')
-user_message = model.transcribe("recording.mp3")["text"].lower().replace('.', '').replace('%', '')
+user_message = model.transcribe(f"{Path(__file__).parent.resolve()}/recording.mp3")["text"].lower().replace('.', '').replace('%', '')
 logging.info(f'Transcribed message: {user_message}')
 
 if ('volume' or 'audio' or 'sound' or 'mute' or 'unmute') in user_message:
