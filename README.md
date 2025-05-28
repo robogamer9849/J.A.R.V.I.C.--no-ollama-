@@ -58,6 +58,8 @@ Press the shortcut and speak commands like:
 
     "open terminal"
 
+    "search for one UI 7 release date"
+
 🔥 Features
 
     Voice recognition using OpenAI Whisper
@@ -67,6 +69,8 @@ Press the shortcut and speak commands like:
     Brightness control: set, increase, decrease
 
     opening apps: as you defined in the config
+
+    searching with you default browser (firefox-based browsers only)
 
     Notifications and system info display
 

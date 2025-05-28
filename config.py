@@ -32,7 +32,7 @@ apps = {
     'file' or 'files' or 'nautilus': 'nautilus',
     'phone' or 'screen' or 'mobile': 'scrcpy --video-codec=h265 --max-size=1920 --max-fps=60 --audio-codec=opus --keyboard=uhid --mouse=uhid --stay-awake --turn-screen-off --kill',
     'task' or 'tasks': 'flatpak run net.nokyan.Resources',
-    'browser' or 'zen': '~/Apps/zen/zen %u',
+    'browser' or 'zen': '~/Apps/zen/zen',
     'code' or 'vscode': 'code',
     'settings' or 'control': 'gnome-control-center',
     'calculator' or 'calc': 'gnome-calculator',
