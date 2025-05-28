@@ -50,6 +50,8 @@ if ('open' or 'run' or 'lunch' or 'show') in user_message:
             break
         except:
             continue
+if ('take' or 'shoot' or 'capture') and ('screen' or 'display' or 'screenshot') in user_message :
+    command = screenshot_cmd + '&' + screenshot_open_path
 
 try:
     run_cmd(command)
