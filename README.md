@@ -10,7 +10,8 @@ cd penguspeak
 
 2️⃣ Install Required Python Packages
 
-`pip install whisper sounddevice wavio notify-py spacy`
+`pip install whisper sounddevice wavio notify-py spacy` <break/>
+`python -m spacy download en_core_web_sm`
 
 Or:
 
