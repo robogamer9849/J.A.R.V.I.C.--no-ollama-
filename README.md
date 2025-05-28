@@ -22,13 +22,15 @@ Or:
 
 Edit the config.py file to:
 
-    Set the Whisper model used for transcription.
+    Set the Whisper and spacy models used for transcription and NLP.
 
-    Specify your system OS and username.
+    Specify your system OS.
 
-    Define the commands for brightness and volume control, system info, and more.
+    Define the commands for brightness and volume control, system info, and more (if needed).
 
-    add the apps you want as shown in the example 
+    add the apps you want as shown in the example
+
+    configure screenshot and web search commands as needed
 
 🚀 Usage
 
