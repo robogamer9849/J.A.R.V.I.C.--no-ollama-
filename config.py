@@ -25,3 +25,8 @@ apps = {
 screenshot_cmd = 'gnome-screenshot'
 # the command for opening the screenshots folder in the file explorer, this is the default for gnome : nautilus -w Pictures
 screenshot_open_path = 'nautilus -w Pictures'
+
+# search command for your browser, put {term} for the search term
+def search_cmd(term):
+    search = f'{apps["browser"]} --search {term}'
+    return search

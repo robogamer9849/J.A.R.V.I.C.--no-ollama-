@@ -53,6 +53,9 @@ if ('open' or 'run' or 'lunch' or 'show') in user_message:
 if ('take' or 'shoot' or 'capture') and ('screen' or 'display' or 'screenshot') in user_message :
     command = screenshot_cmd + '&' + screenshot_open_path
 
+if ('search' or 'find' or 'google') in user_message:
+    pass
+
 try:
     run_cmd(command)
 except:
