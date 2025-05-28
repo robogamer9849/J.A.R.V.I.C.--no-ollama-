@@ -71,7 +71,7 @@ Press the shortcut and speak commands like:
 
     opening apps: as you defined in the config
 
-    searching with you default browser (firefox-based browsers only)
+    searching with your default browser (firefox-based browsers only)
 
     Notifications and system info display
 
@@ -81,7 +81,7 @@ Press the shortcut and speak commands like:
 
     Python packages: whisper, sounddevice, wavio, notifypy
 
-    System packages: ffmpeg, brightnessctl, pamixer, neofetch
+    System packages: ffmpeg, brightnessctl, pamixer, neofetch, 
 
 🐧 License
 
