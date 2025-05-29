@@ -76,10 +76,13 @@ if ('search' or 'find' or 'google') in user_message:
     command = search_cmd(search_term)
 
 if ('shutdown' or 'power off') in user_message:
+    logging.info('Processing shutdown command')
     command = 'systemctl poweroff'
 if ('restart' or 'reboot') in user_message:
+    logging.info('Processing restart command')
     command = 'reboot'
 if 'lock' in user_message:
+    logging.info('Processing lock command')
     command = 'loginctl lock-session'
 
 
