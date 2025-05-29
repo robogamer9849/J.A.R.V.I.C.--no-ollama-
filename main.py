@@ -75,6 +75,16 @@ if ('search' or 'find' or 'google') in user_message:
     print(search_term)
     command = search_cmd(search_term)
 
+if ('shutdown' or 'power off') in user_message:
+    command = 'systemctl poweroff'
+if ('restart' or 'reboot') in user_message:
+    command = 'reboot'
+if 'lock' in user_message:
+    command = 'loginctl lock-session'
+
+
+
+
 try:
     run_cmd(command)
 except:
