@@ -10,7 +10,7 @@ from functionss.generalFunctions import *
 from functionss.sound import *
 from functionss.brightness import *
 
-# Configure logging
+# Configure logging file
 logging.basicConfig(
     filename=f'{Path(__file__).parent.resolve()}/pengu_speak.log',
     level=logging.INFO,
@@ -33,6 +33,7 @@ model = whisper.load_model(whisperModel)
 logging.info(f'Successfully loaded Whisper model: {whisperModel}')
 user_message = model.transcribe(f"{Path(__file__).parent.resolve()}/recording.mp3")["text"].lower().replace('.', '').replace('%', '')
 logging.info(f'Successfully transcribed voice command: "{user_message}"')
+print(user_message)
 
 if ('volume' or 'audio' or 'sound' or 'mute' or 'unmute') in user_message:
     logging.info('Processing sound-related command: adjusting system audio')    
@@ -75,27 +76,23 @@ if ('search' or 'find' or 'google') in user_message:
     print(search_term)
     command = search_cmd(search_term)
 
-if ('shutdown' or 'power off') in user_message:
+if 'shutdown' in user_message or 'power off' in user_message or 'shut down' in user_message:
     logging.info('Processing shutdown command')
     command = 'systemctl poweroff'
-if ('restart' or 'reboot') in user_message:
+if 'restart' in user_message or 'reboot' in user_message:
     logging.info('Processing restart command')
     command = 'reboot'
 if 'lock' in user_message:
     logging.info('Processing lock command')
     command = 'loginctl lock-session'
 
-
-
+try:
+    logging.info(f'running system command: {command}')
+except:
+    logging.error('no system command to run!')
 
 try:
     run_cmd(command)
 except:
-    if ('clear' or 'delete') in user_message and ('logs' or 'log') in user_message:
-        log_file = f'{Path(__file__).parent.resolve()}/pengu_speak.log'
-        if os.path.exists(log_file):
-            os.remove(log_file)
-            send_notification('Successfully cleared system log file')
-    else:
-        logging.warning(f'Unable to process unrecognized command: "{user_message}"')
-        send_notification(f"Sorry, I couldn't understand that command. Please try rephrasing:\n'{user_message}'")
+    logging.warning(f'Unable to process unrecognized user command: "{user_message}"')
+    send_notification(f"Sorry, I couldn't understand that. Please try rephrasing:\n'{user_message}'")
