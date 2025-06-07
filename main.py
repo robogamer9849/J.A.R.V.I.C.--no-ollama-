@@ -35,15 +35,15 @@ user_message = model.transcribe(f"{Path(__file__).parent.resolve()}/recording.mp
 logging.info(f'Successfully transcribed voice command: "{user_message}"')
 print(user_message)
 
-if ('volume' or 'audio' or 'sound' or 'mute' or 'unmute') in user_message:
+if 'volume' in user_message or 'audio' in user_message or 'sound' in user_message or 'mute' in user_message or 'unmute' in user_message:
     logging.info('Processing sound-related command: adjusting system audio')    
     command = voice_cmd(user_message = user_message)
 
-if ('brightness' or 'brightest' or 'light' or 'backlight') in user_message:
+if  'brightness' in user_message or 'brightest' in user_message or 'light' in user_message or 'backlight' in user_message:
     logging.info('Processing brightness-related command: adjusting display settings')
     command = brightness_cmd(user_message = user_message)
 
-if ('open' or 'run' or 'lunch' or 'show') in user_message:
+if 'open' in user_message or 'run' in user_message or 'lunch' in user_message or 'show' in user_message:
     for word in user_message.split():
         try:
             print(word)
@@ -55,12 +55,12 @@ if ('open' or 'run' or 'lunch' or 'show') in user_message:
             logging.debug(f'Application not found: {word}')
             continue
 
-if ('take' or 'shoot' or 'capture') and ('screen' or 'display' or 'screenshot') in user_message :
+if ('take' in user_message or 'shoot' in user_message or 'capture' in user_message) and ('screen' in user_message or 'display' in user_message or 'screenshot' in user_message) :
     command = screenshot_cmd + '&' + screenshot_open_path
     send_notification('Capturing screenshot of your display')
     logging.info('Successfully captured and saved screenshot')
 
-if ('search' or 'find' or 'google') in user_message:
+if 'search' in user_message or 'find' in user_message or 'google' in user_message:
     user_message = user_message.replace('search', '').replace('find', '').replace('google', '').strip()
     logging.info('Processing web search command')
 
